@@ -20,7 +20,7 @@ namespace Moai
             }
 
 
-            Console.WriteLine("Where are you from, " + name + "?");
+            Console.WriteLine($"Where are you from, {name}?");
             string place = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(place))
             {
