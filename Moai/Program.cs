@@ -98,8 +98,33 @@ namespace Moai
                 Console.WriteLine(row);
             }
 
-            Console.SetCursorPosition(2, 3);
-            Console.Write("@");
+            int playerColumn = 2;
+            int playerRow = 3;
+
+            while (true)
+            {
+                Console.SetCursorPosition(playerColumn, playerRow);
+                Console.Write("@");
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.LeftArrow)
+                {
+                    playerColumn--;
+                }
+                else if (keyInfo.Key == ConsoleKey.RightArrow)
+                {
+                    playerColumn++;
+                }
+                else if (keyInfo.Key == ConsoleKey.UpArrow)
+                {
+                    playerRow--;
+                }
+                else if (keyInfo.Key == ConsoleKey.DownArrow)
+                {
+                    playerRow++;
+                }
+            }
 
             Console.SetCursorPosition(0, level.Length);
         }
