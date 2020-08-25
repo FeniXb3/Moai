@@ -113,21 +113,34 @@ namespace Moai
                 char currentCell = currentRow[playerColumn];
                 Console.Write(currentCell);
 
+                int targetColumn = playerColumn;
+                int targetRow = playerRow;
+
                 if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
-                    playerColumn--;
+                    targetColumn = playerColumn - 1;
                 }
                 else if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
-                    playerColumn++;
+                    targetColumn = playerColumn + 1;
                 }
                 else if (keyInfo.Key == ConsoleKey.UpArrow)
                 {
-                    playerRow--;
+                    targetRow = playerRow - 1;
                 }
                 else if (keyInfo.Key == ConsoleKey.DownArrow)
                 {
-                    playerRow++;
+                    targetRow = playerRow + 1;
+                }
+
+                if (targetColumn >= 0 && targetColumn < level[playerRow].Length)
+                {
+                    playerColumn = targetColumn;
+                }
+                
+                if (targetRow >= 0 && targetRow < level.Length)
+                {
+                    playerRow = targetRow;
                 }
             }
 
