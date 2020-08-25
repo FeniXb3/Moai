@@ -132,6 +132,10 @@ namespace Moai
                 {
                     targetRow = playerRow + 1;
                 }
+                else
+                {
+                    break;
+                }
 
                 if (targetColumn >= 0 && targetColumn < level[playerRow].Length)
                 {
