@@ -108,6 +108,11 @@ namespace Moai
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
+                Console.SetCursorPosition(playerColumn, playerRow);
+                string currentRow = level[playerRow];
+                char currentCell = currentRow[playerColumn];
+                Console.Write(currentCell);
+
                 if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
                     playerColumn--;
