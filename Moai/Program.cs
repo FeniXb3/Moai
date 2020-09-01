@@ -137,12 +137,12 @@ namespace Moai
                     break;
                 }
 
-                if (targetColumn >= 0 && targetColumn < level[playerRow].Length)
+                if (targetColumn >= 0 && targetColumn < level[playerRow].Length && level[playerRow][targetColumn] != '#')
                 {
                     playerColumn = targetColumn;
                 }
                 
-                if (targetRow >= 0 && targetRow < level.Length)
+                if (targetRow >= 0 && targetRow < level.Length && level[targetRow][playerColumn] != '#')
                 {
                     playerRow = targetRow;
                 }
