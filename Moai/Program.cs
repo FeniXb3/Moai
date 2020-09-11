@@ -103,15 +103,13 @@ namespace Moai
 
             while (true)
             {
-                Console.SetCursorPosition(playerColumn, playerRow);
-                Console.Write("@");
+                WriteAt(playerColumn, playerRow, "@");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                Console.SetCursorPosition(playerColumn, playerRow);
                 string currentRow = level[playerRow];
                 char currentCell = currentRow[playerColumn];
-                Console.Write(currentCell);
+                WriteAt(playerColumn, playerRow, currentCell);
 
                 int targetColumn = playerColumn;
                 int targetRow = playerRow;
@@ -149,6 +147,17 @@ namespace Moai
             }
 
             Console.SetCursorPosition(0, level.Length);
+        }
+
+        static void WriteAt(int columnNumber, int rowNumber, string text)
+        {
+            Console.SetCursorPosition(columnNumber, rowNumber);
+            Console.Write(text);
+        }
+        static void WriteAt(int columnNumber, int rowNumber, char sign)
+        {
+            Console.SetCursorPosition(columnNumber, rowNumber);
+            Console.Write(sign);
         }
     }
 }
