@@ -143,7 +143,7 @@ namespace Moai
                 {
                     targetRow = player.y + 1;
                 }
-                else
+                else if (keyInfo.Key == ConsoleKey.Escape)
                 {
                     break;
                 }
