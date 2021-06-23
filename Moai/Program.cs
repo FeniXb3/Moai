@@ -135,19 +135,19 @@ namespace Moai
                 {
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        targetPosition = new Vector2(player.position.x - 1, targetPosition.y);
+                        targetPosition = new Vector2(player.position.x - 1, player.position.y);
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        targetPosition = new Vector2(player.position.x + 1, targetPosition.y);
+                        targetPosition = new Vector2(player.position.x + 1, player.position.y);
                         break;
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        targetPosition = new Vector2(targetPosition.x, player.position.y - 1);
+                        targetPosition = new Vector2(player.position.x, player.position.y - 1);
                         break;
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        targetPosition = new Vector2(targetPosition.x, player.position.y + 1);
+                        targetPosition = new Vector2(player.position.x, player.position.y + 1);
                         break;
                     default:
                         break;
