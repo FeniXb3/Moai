@@ -129,13 +129,13 @@ namespace Moai
                     }
                 }
 
-                Display.WriteAt(player.position.x, player.position.y, player.avatar);
+                Display.WriteAt(player.position, player.avatar);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
                 string currentRow = level[player.position.y];
                 char currentCell = currentRow[player.position.x];
-                Display.WriteAt(player.position.x, player.position.y, currentCell);
+                Display.WriteAt(player.position, currentCell);
 
                 Vector2 targetPosition = player.position;
 

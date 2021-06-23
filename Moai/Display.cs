@@ -14,5 +14,15 @@ namespace Moai
             Console.SetCursorPosition(columnNumber, rowNumber);
             Console.Write(sign);
         }
+
+        internal static void WriteAt(Vector2 position, string text)
+        {
+            WriteAt(position.x, position.y, text);
+        }
+
+        internal static void WriteAt(Vector2 position, char sign)
+        {
+            WriteAt(position.x, position.y, sign);
+        }
     }
 }
