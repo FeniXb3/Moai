@@ -117,15 +117,17 @@ namespace Moai
 
             while (true)
             {
-                int inventoryX = level[0].Length + 2;
-                int inventoryY = 0;
-                Display.WriteAt(inventoryX, inventoryY++, "Inventory:");
+                Vector2 inventoryPosition = new Vector2(level[0].Length + 2, 0);
+                int itemIndex = 0;
+
+                Display.WriteAt(inventoryPosition, "Inventory:");
 
                 foreach (var item in player.inventory)
                 {
                     if (!string.IsNullOrEmpty(item))
                     {
-                        Display.WriteAt(inventoryX, inventoryY++, item);
+                        Display.WriteAt(inventoryPosition.x, inventoryPosition.y + 1 + itemIndex, item);
+                        itemIndex++;
                     }
                 }
 
