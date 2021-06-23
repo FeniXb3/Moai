@@ -106,10 +106,7 @@ namespace Moai
             }
 
             Console.Clear();
-            foreach (string row in level)
-            {
-                Console.WriteLine(row);
-            }
+            Display.WriteArrayAt(new Vector2(0, 0), level);
 
             Player player = new Player(2, 3, "@");
             player.inventory[0] = "key";
