@@ -153,14 +153,11 @@ namespace Moai
                         break;
                 }
 
-                if (targetPosition.x >= 0 && targetPosition.x < level[player.position.y].Length && level[player.position.y][targetPosition.x] != '#')
+                if (targetPosition.y >= 0 && targetPosition.y < level.Length
+                    && targetPosition.x >= 0 && targetPosition.x < level[targetPosition.y].Length
+                    && level[targetPosition.y][targetPosition.x] != '#')
                 {
-                    player.position = new Vector2(targetPosition.x, player.position.y);
-                }
-                
-                if (targetPosition.y >= 0 && targetPosition.y < level.Length && level[targetPosition.y][player.position.x] != '#')
-                {
-                    player.position = new Vector2(player.position.x, targetPosition.y);
+                    player.position = targetPosition;
                 }
             }
 
