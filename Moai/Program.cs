@@ -99,9 +99,23 @@ namespace Moai
             }
 
             Player player = new Player(2, 3, "@");
+            player.inventory[0] = "key";
+            player.inventory[3] = "ring";
 
             while (true)
             {
+                int inventoryX = level[0].Length + 2;
+                int inventoryY = 0;
+                Display.WriteAt(inventoryX, inventoryY++, "Inventory:");
+
+                foreach (var item in player.inventory)
+                {
+                    if(!string.IsNullOrEmpty(item))
+                    {
+                        Display.WriteAt(inventoryX, inventoryY++, item);
+                    }
+                }
+
                 Display.WriteAt(player.x, player.y, player.avatar);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
