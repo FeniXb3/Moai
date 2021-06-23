@@ -131,27 +131,30 @@ namespace Moai
                     break;
                 }
 
+                Vector2 diff = new Vector2(0, 0);
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        targetPosition = player.position.Add(new Vector2(- 1, 0));
+                        diff = new Vector2(-1, 0);
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        targetPosition = player.position.Add(new Vector2(1, 0));
+                        diff = new Vector2(1, 0);
                         break;
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        targetPosition = player.position.Add(new Vector2(0, -1));
+                        diff = new Vector2(0, -1);
                         break;
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        targetPosition = player.position.Add(new Vector2(0, 1));
+                        diff = new Vector2(0, 1);
                         break;
                     default:
                         break;
                 }
+
+                targetPosition = player.position.Add(diff);
 
                 if (targetPosition.y >= 0 && targetPosition.y < level.Length
                     && targetPosition.x >= 0 && targetPosition.x < level[targetPosition.y].Length
