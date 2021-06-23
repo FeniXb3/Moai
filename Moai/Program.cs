@@ -117,18 +117,10 @@ namespace Moai
 
             while (true)
             {
-                Vector2 inventoryPosition = new Vector2(level[0].Length + 2, 0);
+                Vector2 inventoryPosition = new Vector2(level[0].Length + 2, 1);
 
-                Display.WriteAt(inventoryPosition, "Inventory:");
-
-                for (int i = 0; i < player.inventory.Length; i++)
-                {
-                    string item = player.inventory[i];
-                    if (!string.IsNullOrEmpty(item))
-                    {
-                        Display.WriteAt(inventoryPosition.x, inventoryPosition.y + 1 + i, item);
-                    }
-                }
+                Display.WriteAt(inventoryPosition.x, inventoryPosition.y - 1, "Inventory:");
+                Display.WriteArrayAt(inventoryPosition, player.inventory);
 
                 Display.WriteAt(player.position, player.avatar);
 
@@ -144,7 +136,7 @@ namespace Moai
                 {
                     break;
                 }
-                
+
                 if (inputDirections.ContainsKey(keyInfo.Key))
                 {
                     Vector2 diff = inputDirections[keyInfo.Key];

@@ -24,5 +24,18 @@ namespace Moai
         {
             WriteAt(position.x, position.y, sign);
         }
+
+        public static void WriteArrayAt(Vector2 position, string[] array)
+        {
+            int rowNumber = 0;
+            foreach (string item in array)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    Display.WriteAt(position.x, position.y + rowNumber, item);
+                    rowNumber++;
+                }
+            }
+        }
     }
 }
