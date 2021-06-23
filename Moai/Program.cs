@@ -110,7 +110,7 @@ namespace Moai
 
                 foreach (var item in player.inventory)
                 {
-                    if(!string.IsNullOrEmpty(item))
+                    if (!string.IsNullOrEmpty(item))
                     {
                         Display.WriteAt(inventoryX, inventoryY++, item);
                     }
@@ -127,25 +127,27 @@ namespace Moai
                 int targetColumn = player.x;
                 int targetRow = player.y;
 
-                if (keyInfo.Key == ConsoleKey.LeftArrow)
-                {
-                    targetColumn = player.x - 1;
-                }
-                else if (keyInfo.Key == ConsoleKey.RightArrow)
-                {
-                    targetColumn = player.x + 1;
-                }
-                else if (keyInfo.Key == ConsoleKey.UpArrow)
-                {
-                    targetRow = player.y - 1;
-                }
-                else if (keyInfo.Key == ConsoleKey.DownArrow)
-                {
-                    targetRow = player.y + 1;
-                }
-                else if (keyInfo.Key == ConsoleKey.Escape)
+                if (keyInfo.Key == ConsoleKey.Escape)
                 {
                     break;
+                }
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        targetColumn = player.x - 1;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        targetColumn = player.x + 1;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        targetRow = player.y - 1;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        targetRow = player.y + 1;
+                        break;
+                    default:
+                        break;
                 }
 
                 if (targetColumn >= 0 && targetColumn < level[player.y].Length && level[player.y][targetColumn] != '#')
