@@ -124,8 +124,7 @@ namespace Moai
                 char currentCell = currentRow[player.x];
                 Display.WriteAt(player.x, player.y, currentCell);
 
-                int targetColumn = player.x;
-                int targetRow = player.y;
+                Vector2 targetPosition = new Vector2(player.x, player.y);
 
                 if (keyInfo.Key == ConsoleKey.Escape)
                 {
@@ -136,32 +135,32 @@ namespace Moai
                 {
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        targetColumn = player.x - 1;
+                        targetPosition = new Vector2(player.x - 1, targetPosition.y);
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        targetColumn = player.x + 1;
+                        targetPosition = new Vector2(player.x + 1, targetPosition.y);
                         break;
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        targetRow = player.y - 1;
+                        targetPosition = new Vector2(targetPosition.x, player.y - 1);
                         break;
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        targetRow = player.y + 1;
+                        targetPosition = new Vector2(targetPosition.x, player.y + 1);
                         break;
                     default:
                         break;
                 }
 
-                if (targetColumn >= 0 && targetColumn < level[player.y].Length && level[player.y][targetColumn] != '#')
+                if (targetPosition.x >= 0 && targetPosition.x < level[player.y].Length && level[player.y][targetPosition.x] != '#')
                 {
-                    player.x = targetColumn;
+                    player.x = targetPosition.x;
                 }
                 
-                if (targetRow >= 0 && targetRow < level.Length && level[targetRow][player.x] != '#')
+                if (targetPosition.y >= 0 && targetPosition.y < level.Length && level[targetPosition.y][player.x] != '#')
                 {
-                    player.y = targetRow;
+                    player.y = targetPosition.y;
                 }
             }
 
