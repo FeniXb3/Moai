@@ -116,15 +116,15 @@ namespace Moai
                     }
                 }
 
-                Display.WriteAt(player.x, player.y, player.avatar);
+                Display.WriteAt(player.position.x, player.position.y, player.avatar);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                string currentRow = level[player.y];
-                char currentCell = currentRow[player.x];
-                Display.WriteAt(player.x, player.y, currentCell);
+                string currentRow = level[player.position.y];
+                char currentCell = currentRow[player.position.x];
+                Display.WriteAt(player.position.x, player.position.y, currentCell);
 
-                Vector2 targetPosition = new Vector2(player.x, player.y);
+                Vector2 targetPosition = player.position;
 
                 if (keyInfo.Key == ConsoleKey.Escape)
                 {
@@ -135,32 +135,32 @@ namespace Moai
                 {
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        targetPosition = new Vector2(player.x - 1, targetPosition.y);
+                        targetPosition = new Vector2(player.position.x - 1, targetPosition.y);
                         break;
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        targetPosition = new Vector2(player.x + 1, targetPosition.y);
+                        targetPosition = new Vector2(player.position.x + 1, targetPosition.y);
                         break;
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        targetPosition = new Vector2(targetPosition.x, player.y - 1);
+                        targetPosition = new Vector2(targetPosition.x, player.position.y - 1);
                         break;
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        targetPosition = new Vector2(targetPosition.x, player.y + 1);
+                        targetPosition = new Vector2(targetPosition.x, player.position.y + 1);
                         break;
                     default:
                         break;
                 }
 
-                if (targetPosition.x >= 0 && targetPosition.x < level[player.y].Length && level[player.y][targetPosition.x] != '#')
+                if (targetPosition.x >= 0 && targetPosition.x < level[player.position.y].Length && level[player.position.y][targetPosition.x] != '#')
                 {
-                    player.x = targetPosition.x;
+                    player.position = new Vector2(targetPosition.x, player.position.y);
                 }
                 
-                if (targetPosition.y >= 0 && targetPosition.y < level.Length && level[targetPosition.y][player.x] != '#')
+                if (targetPosition.y >= 0 && targetPosition.y < level.Length && level[targetPosition.y][player.position.x] != '#')
                 {
-                    player.y = targetPosition.y;
+                    player.position = new Vector2(player.position.x, targetPosition.y);
                 }
             }
 
