@@ -1,9 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Moai
 {
     class Program
     {
+        static Dictionary<ConsoleKey, Vector2> inputDirections = new Dictionary<ConsoleKey, Vector2>
+        {
+            { ConsoleKey.LeftArrow, new Vector2(-1, 0) },
+            { ConsoleKey.A, new Vector2(-1, 0) },
+            { ConsoleKey.RightArrow, new Vector2(1, 0) },
+            { ConsoleKey.D, new Vector2(1, 0) },
+            { ConsoleKey.UpArrow, new Vector2(0, -1) },
+            { ConsoleKey.W, new Vector2(0, -1) },
+            { ConsoleKey.DownArrow, new Vector2(0, 1) },
+            { ConsoleKey.S, new Vector2(0, 1) },
+        };
+
         static void Main(string[] args)
         {
             Console.WriteLine("Who are you, Stranger?");
@@ -130,31 +143,12 @@ namespace Moai
                 {
                     break;
                 }
-
-                Vector2 diff = new Vector2(0, 0);
-                switch (keyInfo.Key)
+                
+                if (inputDirections.ContainsKey(keyInfo.Key))
                 {
-                    case ConsoleKey.LeftArrow:
-                    case ConsoleKey.A:
-                        diff = new Vector2(-1, 0);
-                        break;
-                    case ConsoleKey.RightArrow:
-                    case ConsoleKey.D:
-                        diff = new Vector2(1, 0);
-                        break;
-                    case ConsoleKey.UpArrow:
-                    case ConsoleKey.W:
-                        diff = new Vector2(0, -1);
-                        break;
-                    case ConsoleKey.DownArrow:
-                    case ConsoleKey.S:
-                        diff = new Vector2(0, 1);
-                        break;
-                    default:
-                        break;
+                    Vector2 diff = inputDirections[keyInfo.Key];
+                    targetPosition = player.position.Add(diff);
                 }
-
-                targetPosition = player.position.Add(diff);
 
                 if (targetPosition.y >= 0 && targetPosition.y < level.Length
                     && targetPosition.x >= 0 && targetPosition.x < level[targetPosition.y].Length
